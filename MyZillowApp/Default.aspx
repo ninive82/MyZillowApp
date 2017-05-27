@@ -29,7 +29,7 @@
 
     <div class="jumbotron">
         <h1>My Zillow Exercise</h1>
-        <p class="lead">Enter a US address to get information</p>
+        <p class="lead">Enter a US address to get property information</p>
         <div class="entryForm">
 
             <p>

@@ -114,43 +114,54 @@ namespace MyZillowApp
                     ResultsSection.Visible = true;
                     responseResultsResult resp = results.response.results.result;
                     LabelPropertyID.Text = resp.zpid.ToString();
-                    LinkHomeDetails.NavigateUrl = resp.links.homedetails;
-                    LinkChartData.NavigateUrl = resp.links.graphsanddata;
-                    LinkMap.NavigateUrl = resp.links.mapthishome;
-                    LinkSimilarSales.NavigateUrl = resp.links.comparables;
-
-                    LabelStreet.Text = resp.address.street;
-                    LabelCity.Text = resp.address.city;
-                    LabelState.Text = resp.address.state;
-                    LabelZip.Text = resp.address.zipcode.ToString();
-                    LabelLatitude.Text = resp.address.latitude.ToString();
-                    LabelLongitude.Text = resp.address.longitude.ToString();
-
-                    LabelZestimate.Text = resp.zestimate.amount.Value.ToString();
-                    LabelLastUpdated.Text = resp.zestimate.lastupdated;
-                    Label30DayChange.Text = resp.zestimate.valueChange.Value.ToString();//check is in 30 days
-                    LabelValuationRangeHigh.Text = resp.zestimate.valuationRange.high.Value.ToString();//check is in dollars
-                    LabelValuationRangeLow.Text = resp.zestimate.valuationRange.low.Value.ToString();
-
-                    if (ShowRentZestimate.Checked)
+                    if (resp.links != null)
+                    {
+                        LinkHomeDetails.NavigateUrl = resp.links.homedetails;
+                        LinkChartData.NavigateUrl = resp.links.graphsanddata;
+                        LinkMap.NavigateUrl = resp.links.mapthishome;
+                        LinkSimilarSales.NavigateUrl = resp.links.comparables;
+                    }
+                    if (resp.address != null)
+                    {
+                        LabelStreet.Text = resp.address.street;
+                        LabelCity.Text = resp.address.city;
+                        LabelState.Text = resp.address.state;
+                        LabelZip.Text = resp.address.zipcode.ToString();
+                        LabelLatitude.Text = resp.address.latitude.ToString();
+                        LabelLongitude.Text = resp.address.longitude.ToString();
+                    }
+                    if (resp.zestimate != null)
+                    {
+                        LabelZestimate.Text = resp.zestimate.amount.Value.ToString();
+                        LabelLastUpdated.Text = resp.zestimate.lastupdated;
+                        Label30DayChange.Text = resp.zestimate.valueChange.Value.ToString();
+                        LabelValuationRangeHigh.Text = resp.zestimate.valuationRange.high.Value.ToString();
+                        LabelValuationRangeLow.Text = resp.zestimate.valuationRange.low.Value.ToString();
+                    }
+                    if (ShowRentZestimate.Checked )
                     {
                         RentSection.Visible = true;
-                        LabelRentZestimate.Text = resp.rentzestimate.amount.Value.ToString();
-                        LabelRentLastUpdated.Text = resp.rentzestimate.lastupdated.ToString();
-                        LabelRent30DayChange.Text = resp.rentzestimate.valueChange.Value.ToString();//check is for 30 days
-                        LabelRentValuationRangeHigh.Text = resp.rentzestimate.valuationRange.high.Value.ToString();
-                        LabelRentValuationRangeLow.Text = resp.rentzestimate.valuationRange.low.Value.ToString();
+                        if (resp.rentzestimate != null)
+                        {
+                            LabelRentZestimate.Text = resp.rentzestimate.amount.Value.ToString();
+                            LabelRentLastUpdated.Text = resp.rentzestimate.lastupdated.ToString();
+                            LabelRent30DayChange.Text = resp.rentzestimate.valueChange.Value.ToString();
+                            LabelRentValuationRangeHigh.Text = resp.rentzestimate.valuationRange.high.Value.ToString();
+                            LabelRentValuationRangeLow.Text = resp.rentzestimate.valuationRange.low.Value.ToString();
+                        }
                     }
                     else { RentSection.Visible = false; }
-
-                    LabelHomeValueIndex.Text = resp.localRealEstate.region.zindexValue;
-                    LinkRegionOverview.NavigateUrl = resp.localRealEstate.region.links.overview;
-                    LinkForSaleByOwnerHomes.NavigateUrl = resp.localRealEstate.region.links.forSaleByOwner;
-                    LinkForSaleHomes.NavigateUrl = resp.localRealEstate.region.links.forSale;
+                    if (resp.localRealEstate != null)
+                    {
+                        LabelHomeValueIndex.Text = resp.localRealEstate.region.zindexValue;
+                        LinkRegionOverview.NavigateUrl = resp.localRealEstate.region.links.overview;
+                        LinkForSaleByOwnerHomes.NavigateUrl = resp.localRealEstate.region.links.forSaleByOwner;
+                        LinkForSaleHomes.NavigateUrl = resp.localRealEstate.region.links.forSale;
+                    }
                 }
                 else
                 {
-                    LabelError.Text = results.message.text;
+                    LabelError.Text = results.message.text;                  
                 }
             }
         }

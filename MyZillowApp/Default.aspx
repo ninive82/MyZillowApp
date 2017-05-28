@@ -70,16 +70,16 @@
             <h4>Property ID:<asp:Label ID="LabelPropertyID" runat="server" Text=""></asp:Label></h4>
             <ul class="linkslist">
                 <li>
-                    <asp:HyperLink ID="LinkHomeDetails" runat="server" Target="_blank">Home Details </asp:HyperLink></li>
-                <li>|</li>
+                    <asp:HyperLink ID="LinkHomeDetails" runat="server" Target="_blank" class="btn btn-default">Home Details </asp:HyperLink></li>
+               
                 <li>
-                    <asp:HyperLink ID="LinkChartData" runat="server" Target="_blank">Data Chart </asp:HyperLink></li>
-                <li>|</li>
+                    <asp:HyperLink ID="LinkChartData" runat="server" Target="_blank" class="btn btn-default">Data Chart </asp:HyperLink></li>
+                
                 <li>
-                    <asp:HyperLink ID="LinkMap" runat="server" Target="_blank">Home Map </asp:HyperLink></li>
-                <li>|</li>
+                    <asp:HyperLink ID="LinkMap" runat="server" Target="_blank" class="btn btn-default">Home Map </asp:HyperLink></li>
+               
                 <li>
-                    <asp:HyperLink ID="LinkSimilarSales" runat="server" Target="_blank">Similar Sales</asp:HyperLink></li>
+                    <asp:HyperLink ID="LinkSimilarSales" runat="server" Target="_blank" class="btn btn-default">Similar Sales</asp:HyperLink></li>
             </ul>
 
             <div class="col-md-4">

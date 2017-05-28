@@ -45,6 +45,24 @@ namespace MyZillowApp.Tests
             StringAssert.Contains(res, "Error: no address specified");
         }
 
+        // Test function getZillowXMLResult with address that does not contain
+        // renting data. Should not return any errors 'no address specified'
+        [TestMethod]
+        public void getZillowXMLResult_WithAddressNoRentZestimate_returnsValidXML()
+        {
+            // arrange  
+            string address = "1 Main St";
+            string cityStateZIP = "CA";
+            string path = "http://www.zillow.com/webservice/GetSearchResults.htm";
+            string zID = "X1-ZWz1dyb53fdhjf_6jziz";
+
+            // act  
+            string res = MyZillowApp._Default.getZillowXMLResult(path, zID, address, cityStateZIP, false);
+
+            // assert  
+            StringAssert.Contains(res, "1 Main St");
+        }
+
 
         // Test function parseXML2Object with valid XML as argument
         // should return a valid Object representation
